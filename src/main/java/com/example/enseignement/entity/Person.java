@@ -1,4 +1,4 @@
-package entity;
+package com.example.enseignement.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -6,15 +6,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "Type")
+@DiscriminatorColumn(name = "type")
 public abstract class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(name = "type" , nullable = false)
-    private String type;
 
     @Column(name = "civility" , nullable = false)
     private String civility;
@@ -30,7 +27,7 @@ public abstract class Person {
     @Size(max = 255)
     private String email;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="adress_id", nullable=false)
     private Adress adress;
 
@@ -40,14 +37,6 @@ public abstract class Person {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getCivility() {

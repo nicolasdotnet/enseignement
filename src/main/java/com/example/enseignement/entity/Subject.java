@@ -1,4 +1,4 @@
-package entity;
+package com.example.enseignement.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,6 +21,10 @@ public class Subject {
     private String difficulty;
 
     @ManyToMany
+    @JoinTable(
+            name = "skill",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private List<Student> Students;
 
     public Subject() {

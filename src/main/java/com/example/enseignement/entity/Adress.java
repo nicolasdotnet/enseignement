@@ -1,4 +1,4 @@
-package entity;
+package com.example.enseignement.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,9 +25,6 @@ public class Adress {
 
     @Column(name = "country", nullable = false)
     private String country;
-
-    @OneToMany
-    private List<Person> peoples;
 
     public Adress() {
     }
@@ -78,13 +75,5 @@ public class Adress {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public List<Person> getPeoples() {
-        return peoples;
-    }
-
-    public void setPeoples(List<Person> peoples) {
-        this.peoples = peoples;
     }
 }

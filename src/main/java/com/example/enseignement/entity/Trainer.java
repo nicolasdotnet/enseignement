@@ -1,24 +1,26 @@
-package entity;
+package com.example.enseignement.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("S")
+@Table(name = "person")
+@DiscriminatorValue("t")
 public class Trainer extends Person {
 
-    @Column(name = "hireDate" , nullable = false)
+    @Column(name = "hireDate", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
-    @Column(name = "experience" , nullable = false)
+    @Column(name = "experience", nullable = false)
     private int experience;
 
-    @Column(name = "interne" , nullable = false)
+    @Column(name = "interne", nullable = false)
     private int interne;
 
-    @OneToMany
+    @OneToMany()
+    @JoinColumn(name = "trainer_id")
     private List<Student> students;
 
     public Trainer() {

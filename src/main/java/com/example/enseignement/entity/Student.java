@@ -1,4 +1,4 @@
-package entity;
+package com.example.enseignement.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -6,18 +6,23 @@ import java.util.List;
 
 
 @Entity
-@DiscriminatorValue("S")
-public class Student extends Person{
+@Table(name = "person")
+@DiscriminatorValue("s")
+public class Student extends Person {
 
-    @Column(name = "birthDate" , nullable = false)
+    @Column(name = "birthDate", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @ManyToOne
-    @JoinColumn(name="trainer_id", nullable=false)
+    @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
 
     @ManyToMany
+    @JoinTable(
+            name = "skill",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private List<Subject> subjects;
 
     public Student() {
