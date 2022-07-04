@@ -30,6 +30,12 @@ public class Subject {
     public Subject() {
     }
 
+    public Subject(String name, int duration, String difficulty) {
+        this.name = name;
+        this.duration = duration;
+        this.difficulty = difficulty;
+    }
+
     public Long getId() {
         return id;
     }
