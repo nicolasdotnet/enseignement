@@ -1,7 +1,8 @@
 package com.example.enseignement.controller;
 
+import com.example.enseignement.entity.Difficulty;
 import com.example.enseignement.entity.Subject;
-import com.example.enseignement.repository.SubjectService;
+import com.example.enseignement.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,14 @@ public class SubjectController {
 
     @GetMapping("/name/{name}")
     @ResponseStatus(code = HttpStatus.OK)
-    public List<Subject> findByModel(@PathVariable String name) {
+    public List<Subject> findByName(@PathVariable String name) {
         return this.subjectService.findByName(name);
+    }
+
+    @GetMapping("/difficulty/{difficulty}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Subject> findByDifficulty(@PathVariable Difficulty difficulty) {
+        return this.subjectService.findByDifficulty(difficulty);
     }
 
     @PostMapping("")

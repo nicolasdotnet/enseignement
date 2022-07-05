@@ -10,12 +10,12 @@ import java.util.List;
 @DiscriminatorValue("s")
 public class Student extends Person {
 
-    @Column(name = "birthDate", nullable = false)
+    @Column(name = "birthDate")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
     @ManyToOne
-    @JoinColumn(name = "trainer_id", nullable = false)
+    @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 
     @ManyToMany
@@ -26,6 +26,11 @@ public class Student extends Person {
     private List<Subject> subjects;
 
     public Student() {
+    }
+
+    public Student(String civility, String lastName, String firstName, String email, Adress adress, Date birthDate) {
+        super(civility, lastName, firstName, email, adress);
+        this.birthDate = birthDate;
     }
 
     public Date getBirthDate() {

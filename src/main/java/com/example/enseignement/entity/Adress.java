@@ -14,7 +14,7 @@ public class Adress {
     @Column(name = "street", nullable = false)
     private String street;
 
-    @Column(name = "complement", nullable = false)
+    @Column(name = "complement")
     private String complement;
 
     @Column(name = "zipcode", nullable = false)
@@ -27,6 +27,14 @@ public class Adress {
     private String country;
 
     public Adress() {
+    }
+
+    public Adress(String street, String complement, String zipcode, String city, String country) {
+        this.street = street;
+        this.complement = complement;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
     }
 
     public Long getId() {

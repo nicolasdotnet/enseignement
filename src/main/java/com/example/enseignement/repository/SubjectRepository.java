@@ -1,14 +1,15 @@
 package com.example.enseignement.repository;
 
+import com.example.enseignement.entity.Difficulty;
 import com.example.enseignement.entity.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
-    public List<Subject> findByDifficultyAndDuration(String difficulty, int duration);
+    List<Subject> findAllByDifficulty(@Param("dif") Difficulty difficulty);
 
-    public Optional<Subject> findById(Long id);
+    List<Subject> findAllByName(String name);
 }

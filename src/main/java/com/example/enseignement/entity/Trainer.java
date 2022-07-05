@@ -9,14 +9,14 @@ import java.util.List;
 @DiscriminatorValue("t")
 public class Trainer extends Person {
 
-    @Column(name = "hireDate", nullable = false)
+    @Column(name = "hireDate")
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
-    @Column(name = "experience", nullable = false)
+    @Column(name = "experience")
     private int experience;
 
-    @Column(name = "interne", nullable = false)
+    @Column(name = "interne")
     private int interne;
 
     @OneToMany()
@@ -24,6 +24,13 @@ public class Trainer extends Person {
     private List<Student> students;
 
     public Trainer() {
+    }
+
+    public Trainer(String civility, String lastName, String firstName, String email, Adress adress, Date hireDate, int experience, int interne) {
+        super(civility, lastName, firstName, email, adress);
+        this.hireDate = hireDate;
+        this.experience = experience;
+        this.interne = interne;
     }
 
     public Date getHireDate() {

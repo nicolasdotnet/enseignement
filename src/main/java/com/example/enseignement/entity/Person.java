@@ -31,6 +31,17 @@ public abstract class Person {
     @JoinColumn(name="adress_id", nullable=false)
     private Adress adress;
 
+    public Person() {
+    }
+
+    public Person(String civility, String lastName, String firstName, String email, Adress adress) {
+        this.civility = civility;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.adress = adress;
+    }
+
     public Long getId() {
         return id;
     }

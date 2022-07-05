@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name="subject")
+@NamedQuery(name = "Subject.findAllByDifficulty", query = "from Subject m where m.difficulty = :dif")
 public class Subject {
 
     @Id
@@ -18,7 +19,7 @@ public class Subject {
     private int duration;
 
     @Column(name = "difficulty", nullable = false)
-    private String difficulty;
+    private Difficulty difficulty;
 
     @ManyToMany
     @JoinTable(
@@ -30,7 +31,7 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(String name, int duration, String difficulty) {
+    public Subject(String name, int duration, Difficulty difficulty) {
         this.name = name;
         this.duration = duration;
         this.difficulty = difficulty;
@@ -60,11 +61,11 @@ public class Subject {
         this.duration = duration;
     }
 
-    public String getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
